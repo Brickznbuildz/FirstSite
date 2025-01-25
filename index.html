@@ -1,1 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giant Gadget Website</title>
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Full-screen setup */
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #6e7bff, #3c6be5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: white;
+    }
+
+    /* Animated Background */
+    @keyframes moveBackground {
+      0% { background-position: 0 0; }
+      100% { background-position: 100% 100%; }
+    }
+
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      animation: moveBackground 10s infinite linear;
+      background: linear-gradient(135deg, #ff7f50, #00bfff);
+      z-index: -1;
+    }
+
+    /* Custom Cursor */
+    body {
+      cursor: url('https://cdn.pixabay.com/photo/2016/02/19/10/53/cursor-1208844_960_720.png'), auto;
+    }
+
+    /* Container for gadgets */
+    .gadgets-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+
+    /* Time Widget */
+    .time-widget {
+      font-size: 2rem;
+      font-weight: bold;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      width: 200px;
+    }
+
+    /* Calculator */
+    .calculator {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .calculator input, .calculator button {
+      font-size: 20px;
+      padding: 10px;
+      margin: 5px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+    }
+
+    .calculator input {
+      width: 220px;
+      margin-bottom: 20px;
+    }
+
+    .calculator button {
+      background: #3c6be5;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* To-do List */
+    .todo-list {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .todo-list input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .todo-list ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .todo-list li {
+      margin: 5px 0;
+      background: #3c6be5;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated background -->
+  <div class="background"></div>
+
+  <!-- Main gadgets container -->
+  <div class="gadgets-container">
+    <!-- Time Widget -->
+    <div class="time-widget" id="time">
+      <!-- Time will be displayed here -->
+    </div>
+
+    <!-- Calculator Widget -->
+    <div class="calculator">
+      <input type="text" id="calculator-display" disabled>
+      <br>
+      <button onclick="appendToCalculator('1')">1</button>
+      <button onclick="appendToCalculator('2')">2</button>
+      <button onclick="appendToCalculator('3')">3</button>
+      <br>
+      <button onclick="appendToCalculator('4')">4</button>
+      <button onclick="appendToCalculator('5')">5</button>
+      <button onclick="appendToCalculator('6')">6</button>
+      <br>
+      <button onclick="appendToCalculator('7')">7</button>
+      <button onclick="appendToCalculator('8')">8</button>
+      <button onclick="appendToCalculator('9')">9</button>
+      <br>
+      <button onclick="appendToCalculator('0')">0</button>
+      <button onclick="appendToCalculator('+')">+</button>
+      <button onclick="appendToCalculator('-')">-</button>
+      <br>
+      <button onclick="clearCalculator()">C</button>
+      <button onclick="calculateResult()">=</button>
+    </div>
+
+    <!-- To-Do List Widget -->
+    <div class="todo-list">
+      <input type="text" id="todo-input" placeholder="Add new task...">
+      <ul id="todo-list"></ul>
+    </div>
+  </div>
+
+  <script>
+    // Time display
+    function updateTime() {
+      const timeElement = document.getElementById('time');
+      const date = new Date();
+      timeElement.textContent = date.toLocaleTimeString();
+    }
+
+    setInterval(updateTime, 1000);  // Update every second
+
+    // Calculator functionality
+    let calculatorInput = '';
+
+    function appendToCalculator(value) {
+      calculatorInput += value;
+      document.getElementById('calculator-display').value = calculatorInput;
+    }
+
+    function clearCalculator() {
+      calculatorInput = '';
+      document.getElementById('calculator-display').value = calculatorInput;
+    }
+
+    function calculateResult() {
+      try {
+        calculatorInput = eval(calculatorInput).toString();
+        document.getElementById('calculator-display').value = calculatorInput;
+      } catch (e) {
+        document.getElementById('calculator-display').value = 'Error';
+      }
+    }
+
+    // To-do list functionality
+    document.getElementById('todo-input').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        const task = event.target.value;
+        if (task) {
+          const li = document.createElement('li');
+          li.textContent = task;
+          document.getElementById('todo-list').appendChild(li);
+          event.target.value = '';
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
 
