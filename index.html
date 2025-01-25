@@ -1,170 +1,39 @@
-
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Giant Gadget Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #222;
-            color: #ccc;
-        }
-        header, nav, footer {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        nav a {
-            color: #fff;
-            margin: 0 15px;
-            text-decoration: none;
-            padding: 5px 10px;
-        }
-        nav a:hover {
-            background-color: #555;
-        }
-        main {
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        section {
-            margin: 20px 0;
-        }
-        .gadget {
-            background-color: #444;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        #time {
-            font-size: 2em;
-            text-align: center;
-        }
-        #display {
-            width: 100%;
-            font-size: 1.5em;
-            text-align: right;
-            margin-bottom: 10px;
-        }
-        button {
-            width: 48px;
-            height: 48px;
-            font-size: 1em;
-            margin: 2px;
-        }
-        #todo-list li {
-            list-style-type: none;
-            margin: 5px 0;
-            padding: 5px;
-            background-color: #555;
-        }
-    </style>
-    <script>
-        // Clock
-        function updateTime() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const timeString = `${hours}:${minutes}:${seconds}`;
-            document.getElementById('time').textContent = timeString;
-        }
-        setInterval(updateTime, 1000);
-        updateTime();
-
-        // Calculator
-        function appendToDisplay(value) {
-            document.getElementById('display').value += value;
-        }
-
-        function clearDisplay() {
-            document.getElementById('display').value = '';
-        }
-
-        function calculate() {
-            const display = document.getElementById('display');
-            try {
-                display.value = eval(display.value);
-            } catch {
-                display.value = 'Error';
-            }
-        }
-
-        // To-Do List
-        function addTask() {
-            const input = document.getElementById('todo-input');
-            const task = input.value.trim();
-            if (task) {
-                const li = document.createElement('li');
-                li.textContent = task;
-                document.getElementById('todo-list').appendChild(li);
-                input.value = '';
-            }
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Massive Website</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Giant Gadget Website</h1>
-    </header>
+  <header>
     <nav>
-        <a href="#clock">Clock</a>
-        <a href="#calculator">Calculator</a>
-        <a href="#todo">To-Do List</a>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="services.html">Services</a></li>
+      </ul>
     </nav>
-    <main>
-        <section id="clock">
-            <h2>Current Time</h2>
-            <div class="gadget">
-                <p id="time"></p>
-            </div>
-        </section>
-        <section id="calculator">
-            <h2>Calculator</h2>
-            <div class="gadget">
-                <input type="text" id="display" disabled>
-                <div>
-                    <button onclick="appendToDisplay('1')">1</button>
-                    <button onclick="appendToDisplay('2')">2</button>
-                    <button onclick="appendToDisplay('3')">3</button>
-                    <button onclick="clearDisplay()">C</button>
-                </div>
-                <div>
-                    <button onclick="appendToDisplay('4')">4</button>
-                    <button onclick="appendToDisplay('5')">5</button>
-                    <button onclick="appendToDisplay('6')">6</button>
-                    <button onclick="calculate()">=</button>
-                </div>
-                <div>
-                    <button onclick="appendToDisplay('7')">7</button>
-                    <button onclick="appendToDisplay('8')">8</button>
-                    <button onclick="appendToDisplay('9')">9</button>
-                </div>
-                <div>
-                    <button onclick="appendToDisplay('0')">0</button>
-                    <button onclick="appendToDisplay('+')">+</button>
-                    <button onclick="appendToDisplay('-')">-</button>
-                    <button onclick="appendToDisplay('*')">*</button>
-                    <button onclick="appendToDisplay('/')">/</button>
-                </div>
-            </div>
-        </section>
-        <section id="todo">
-            <h2>To-Do List</h2>
-            <div class="gadget">
-                <input type="text" id="todo-input" placeholder="Add a new task">
-                <button onclick="addTask()">Add</button>
-                <ul id="todo-list"></ul>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 My Giant Gadget Website. All rights reserved.</p>
-    </footer>
+  </header>
+
+  <section id="home">
+    <h1>Welcome to the Massive Website</h1>
+    <p>Scroll down to explore!</p>
+    <button onclick="window.location.href='services.html'">Go to Services</button>
+  </section>
+
+  <section id="long-content">
+    <h2>Endless Scroll Section</h2>
+    <p>Keep scrolling for more content...</p>
+        <p> Neev Is Great </p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Massive Website. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
