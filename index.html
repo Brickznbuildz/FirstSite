@@ -3,37 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Massive Website</title>
+  <title>Modern Website</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Header with navigation links -->
   <header>
     <nav>
       <ul>
         <li><a href="#home">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <section id="home">
-    <h1>Welcome to the Massive Website</h1>
-    <p>Scroll down to explore!</p>
-    <button onclick="window.location.href='services.html'">Go to Services</button>
-  </section>
+  <!-- Main content -->
+  <main id="home">
+    <section class="hero">
+      <h1>Welcome to the Modern Website</h1>
+      <p>Your journey begins here...</p>
+      <button class="cta-button" onclick="window.location.href='#about'">Learn More</button>
+    </section>
 
-  <section id="long-content">
-    <h2>Endless Scroll Section</h2>
-    <p>Keep scrolling for more content...</p>
-        <p> Neev Is Great </p>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Massive Website. All rights reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+    <!-- Widgets (Clock and Weather) -->
+    <section class="widgets">
+      <div class="widget clock">
