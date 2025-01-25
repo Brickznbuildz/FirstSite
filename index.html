@@ -1,126 +1,170 @@
-<!DOCTYPE html>
+
+        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Math </title>
+    <title>My Giant Gadget Website</title>
     <style>
-        body, html {
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-            font-family: Arial, sans-serif;
-            color: white;
+            background-color: #222;
+            color: #ccc;
         }
-        body {
-            background: url('https://source.unsplash.com/collection/190727/1920x1080') no-repeat center center fixed;
-            background-size: cover;
-            overflow-y: scroll;
-        }
-        .content {
+        header, nav, footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
             text-align: center;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 40px;
-            margin: 50px auto;
-            width: 80%;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
-        h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 1.2em;
-        }
-        .button-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .button {
-            background-color: #6CAF50;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
+        nav a {
+            color: #fff;
+            margin: 0 15px;
             text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 10px;
-            cursor: pointer;
-            border-radius: 12px;
-            transition: background-color 0.3s;
+            padding: 5px 10px;
         }
-        .button:hover {
-            background-color: #75a049;
+        nav a:hover {
+            background-color: #555;
+        }
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        section {
+            margin: 20px 0;
         }
         .gadget {
-            margin-top: 20px;
-            background: rgba(255, 255, 255, 0.2);
+            background-color: #444;
             padding: 20px;
             border-radius: 10px;
         }
-        .gadget h2 {
-            margin-top: 0;
+        #time {
+            font-size: 2em;
+            text-align: center;
+        }
+        #display {
+            width: 100%;
+            font-size: 1.5em;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 48px;
+            height: 48px;
+            font-size: 1em;
+            margin: 2px;
+        }
+        #todo-list li {
+            list-style-type: none;
+            margin: 5px 0;
+            padding: 5px;
+            background-color: #555;
         }
     </style>
-</head>
-<body>
-    <div class="content">
-        <h1>Welcome to my website!</h1>
-        <p>Feel free to mess around, and click as many buttons as you want!</p>
-        
-        <div class="button-container">
-            <button class="button" onclick="alert('Button 1 clicked!')">Button 1</button>
-            <button class="button" onclick="alert('Button 2 clicked!')">Button 2</button>
-            <button class="button" onclick="alert('Button 3 clicked!')">Button 3</button>
-            <button class="button" onclick="alert('Button 4 clicked!')">Button 4</button>
-            <button class="button" onclick="alert('Button 5 clicked!')">Button 5</button>
-            <button class="button" onclick="alert('Button 6 clicked!')">Button 6</button>
-            <button class="button" onclick="alert('Button 7 clicked!')">Button 7</button>
-            <button class="button" onclick="alert('Button 8 clicked!')">Button 8</button>
-            <button class="button" onclick="alert('Button 9 clicked!')">Button 9</button>
-            <button class="button" onclick="alert('Button 10 clicked!')">Button 10</button>
-            <button class="button" onclick="alert('Button 11 clicked!')">Button 11</button>
-            <button class="button" onclick="alert('Button 12 clicked!')">Button 12</button>
-            <button class="button" onclick="alert('Button 13 clicked!')">Button 13</button>
-            <button class="button" onclick="alert('Button 14 clicked!')">Button 14</button>
-            <button class="button" onclick="alert('Button 15 clicked!')">Button 15</button>
-        </div>
-
-        <div class="gadget">
-            <h2>Gadget 1: Current Time</h2>
-            <p id="current-time"></p>
-        </div>
-
-        <div class="gadget">
-            <h2>Gadget 2: Simple Calculator</h2>
-            <input type="number" id="num1" placeholder="Enter number 1">
-            <input type="number" id="num2" placeholder="Enter number 2">
-            <button class="button" onclick="calculateSum()">Calculate Sum</button>
-            <p id="result"></p>
-        </div>
-    </div>
-
     <script>
-        // Display the current time in the gadget
+        // Clock
         function updateTime() {
             const now = new Date();
-            document.getElementById('current-time').innerText = now.toLocaleTimeString();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('time').textContent = timeString;
         }
         setInterval(updateTime, 1000);
-        updateTime(); // Initial call to display time immediately
+        updateTime();
 
-        // Simple calculator function
-        function calculateSum() {
-            const num1 = parseFloat(document.getElementById('num1').value);
-            const num2 = parseFloat(document.getElementById('num2').value);
-            const sum = num1 + num2;
-            document.getElementById('result').innerText = 'Result: ' + sum;
+        // Calculator
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculate() {
+            const display = document.getElementById('display');
+            try {
+                display.value = eval(display.value);
+            } catch {
+                display.value = 'Error';
+            }
+        }
+
+        // To-Do List
+        function addTask() {
+            const input = document.getElementById('todo-input');
+            const task = input.value.trim();
+            if (task) {
+                const li = document.createElement('li');
+                li.textContent = task;
+                document.getElementById('todo-list').appendChild(li);
+                input.value = '';
+            }
         }
     </script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Giant Gadget Website</h1>
+    </header>
+    <nav>
+        <a href="#clock">Clock</a>
+        <a href="#calculator">Calculator</a>
+        <a href="#todo">To-Do List</a>
+    </nav>
+    <main>
+        <section id="clock">
+            <h2>Current Time</h2>
+            <div class="gadget">
+                <p id="time"></p>
+            </div>
+        </section>
+        <section id="calculator">
+            <h2>Calculator</h2>
+            <div class="gadget">
+                <input type="text" id="display" disabled>
+                <div>
+                    <button onclick="appendToDisplay('1')">1</button>
+                    <button onclick="appendToDisplay('2')">2</button>
+                    <button onclick="appendToDisplay('3')">3</button>
+                    <button onclick="clearDisplay()">C</button>
+                </div>
+                <div>
+                    <button onclick="appendToDisplay('4')">4</button>
+                    <button onclick="appendToDisplay('5')">5</button>
+                    <button onclick="appendToDisplay('6')">6</button>
+                    <button onclick="calculate()">=</button>
+                </div>
+                <div>
+                    <button onclick="appendToDisplay('7')">7</button>
+                    <button onclick="appendToDisplay('8')">8</button>
+                    <button onclick="appendToDisplay('9')">9</button>
+                </div>
+                <div>
+                    <button onclick="appendToDisplay('0')">0</button>
+                    <button onclick="appendToDisplay('+')">+</button>
+                    <button onclick="appendToDisplay('-')">-</button>
+                    <button onclick="appendToDisplay('*')">*</button>
+                    <button onclick="appendToDisplay('/')">/</button>
+                </div>
+            </div>
+        </section>
+        <section id="todo">
+            <h2>To-Do List</h2>
+            <div class="gadget">
+                <input type="text" id="todo-input" placeholder="Add a new task">
+                <button onclick="addTask()">Add</button>
+                <ul id="todo-list"></ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 My Giant Gadget Website. All rights reserved.</p>
+    </footer>
 </body>
 </html>
