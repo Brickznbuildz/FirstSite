@@ -140,3 +140,5 @@ footer {
     margin-bottom: 30px;
   }
 }
+<script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+new cursoreffects.springyEmojiCursor({ emoji: "🤷‍♂️" });
