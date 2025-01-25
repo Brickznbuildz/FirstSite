@@ -3,129 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Black and Orange Website</title>
+    <title>GameHub</title>
     <style>
-        body, html {
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            height: 100%;
-            font-family: Arial, sans-serif;
-            color: orange; /* Change the text color to orange */
-            background: #000;
-        }
-
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #ff4500, #000000);
-            background-size: 200% 200%;
-            animation: moveBackground 10s linear infinite;
-            z-index: -1;
-        }
-
-        @keyframes moveBackground {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            background-color: #121212;
+            color: #ffffff;
         }
 
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            text-align: center;
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        .time {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            color: orange; /* Time text color */
-            font-size: 1.5em;
+        h1, h2, p {
+            margin: 0 0 20px 0;
         }
 
-        h1 {
-            font-size: 4em;
-            margin: 0.2em;
+        /* Header Styles */
+        header {
+            background-color: #1e1e1e;
+            padding: 20px 0;
         }
 
-        p {
-            font-size: 1.5em;
+        header h1 {
+            display: inline-block;
+            color: #ff8c00; /* Brighter orange color */
         }
 
-        a {
-            color: orange; /* Change the link text color to orange */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+            float: right;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
             text-decoration: none;
-            font-size: 1.2em;
-            border: 2px solid orange; /* Change the link border color to orange */
             padding: 10px 20px;
             border-radius: 5px;
-            transition: background 0.3s, color 0.3s;
+            transition: background-color 0.3s, transform 0.3s; /* Cool hover effect */
         }
 
-        a:hover {
-            background: orange; /* Change the link background color to orange on hover */
-            color: #000;
+        nav ul li a:hover {
+            background-color: #ff8c00; /* Brighter orange color */
+            transform: scale(1.1); /* Cool hover effect */
         }
 
-        .info-section {
-            padding: 50px;
-            background-color: #111;
-            color: orange;
+        /* Section Styles */
+        section {
+            display: none;
+            padding: 60px 0;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        .hero {
+            background-color: #2c2c2c;
             text-align: center;
+            padding: 100px 0;
         }
 
-        .info-section h2 {
-            font-size: 3em;
+        .hero h2 {
+            font-size: 2.5em;
+            color: #ff8c00; /* Brighter orange color */
         }
 
-        .info-section p {
+        .hero p {
             font-size: 1.2em;
-            margin-bottom: 20px;
+        }
+
+        /* Content Section Styles */
+        .content h2 {
+            font-size: 2em;
+            color: #ff8c00; /* Brighter orange color */
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1e1e1e;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
         }
     </style>
 </head>
 <body>
-    <div class="background"></div>
-    <div class="time" id="time"></div> <!-- Time display -->
-    <div class="container">
-        <h1>Welcome To The Game Hub</h1>
-        <p>This is a website created by Neev Subbaiah</p>
-        <a href="#info">Learn More</a> <!-- Updated link to navigate to the info section -->
-    </div>
+    <header>
+        <div class="container">
+            <h1>GameHub</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showSection('home')">Home</a></li>
+                    <li><a href="#" onclick="showSection('about')">About Us</a></li>
+                    <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+                    <li><a href="#" onclick="showSection('start')">Start Your Adventure</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <!-- New section for additional information -->
-    <div class="info-section" id="info">
-        <h2>More Information</h2>
-        <p>
-        </p>
-        <!-- Add your additional text/content here -->
-        <div>
-            <h3>About Us</h3>
-            <p>This website is dedicated to bringing you the latest in gaming news and reviews.</p>
+    <section id="home" class="hero active">
+        <div class="container">
+            <h2>Welcome to GameHub</h2>
+            <p>Your ultimate gaming destination</p>
         </div>
-        <div>
-            <h3>Contact</h3>
-            <p>If you have any questions, feel free to reach out at brickznbuildz@gmail.com.</p>
+    </section>
+
+    <section id="about" class="content">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>GameHub is the leading platform for gamers, offering the latest news, reviews, and community events.</p>
         </div>
-        <!-- Add more sections as needed -->
-    </div>
+    </section>
+
+    <section id="contact" class="content">
+        <div class="container">
+            <h2>Contact</h2>
+            <p>Get in touch with us at contact@gamehub.com or follow us on social media.</p>
+        </div>
+    </section>
+
+    <section id="start" class="content">
+        <div class="container">
+            <h2>Start Your Adventure</h2>
+            <p>Join our community and start your gaming adventure today!</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 GameHub. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
-        function updateTime() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString();
-            document.getElementById('time').textContent = timeString;
-        }
+        function showSection(sectionId) {
+            // Hide all sections
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function(section) {
+                section.classList.remove('active');
+            });
 
-        // Update the time immediately and every second
-        updateTime();
-        setInterval(updateTime, 1000);
+            // Show the selected section
+            var activeSection = document.getElementById(sectionId);
+            activeSection.classList.add('active');
+            window.scrollTo(0, 0); // Scroll to top after showing the section
+        }
     </script>
 </body>
 </html>
