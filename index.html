@@ -1,153 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cool Website</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Black and Orange Website</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            color: orange; /* Change the text color to orange */
+            background: #000;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff4500, #000000);
+            background-size: 200% 200%;
+            animation: moveBackground 10s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+        }
+
+        .time {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: orange; /* Time text color */
+            font-size: 1.5em;
+        }
+
+        h1 {
+            font-size: 4em;
+            margin: 0.2em;
+        }
+
+        p {
+            font-size: 1.5em;
+        }
+
+        a {
+            color: orange; /* Change the link text color to orange */
+            text-decoration: none;
+            font-size: 1.2em;
+            border: 2px solid orange; /* Change the link border color to orange */
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        a:hover {
+            background: orange; /* Change the link background color to orange on hover */
+            color: #000;
+        }
+
+        .info-section {
+            padding: 50px;
+            background-color: #111;
+            color: orange;
+            text-align: center;
+        }
+
+        .info-section h2 {
+            font-size: 3em;
+        }
+
+        .info-section p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-  <!-- Time Display -->
-  <div id="time" class="time"></div>
+    <div class="background"></div>
+    <div class="time" id="time"></div> <!-- Time display -->
+    <div class="container">
+        <h1>Welcome To The Game Hub</h1>
+        <p>This is a website created by Neev Subbaiah</p>
+        <a href="#info">Learn More</a> <!-- Updated link to navigate to the info section -->
+    </div>
 
-  <!-- Calculator -->
-  <div class="calculator">
-    <input type="text" id="calcInput" disabled />
-    <button onclick="addToCalc(1)">1</button>
-    <button onclick="addToCalc(2)">2</button>
-    <button onclick="addToCalc(3)">3</button>
-    <button onclick="addToCalc('+')">+</button>
-    <button onclick="addToCalc(4)">4</button>
-    <button onclick="addToCalc(5)">5</button>
-    <button onclick="addToCalc(6)">6</button>
-    <button onclick="addToCalc('-')">-</button>
-    <button onclick="addToCalc(7)">7</button>
-    <button onclick="addToCalc(8)">8</button>
-    <button onclick="addToCalc(9)">9</button>
-    <button onclick="addToCalc('*')">*</button>
-    <button onclick="addToCalc(0)">0</button>
-    <button onclick="clearCalc()">C</button>
-    <button onclick="calculateResult()">=</button>
-    <button onclick="addToCalc('/')">/</button>
-  </div>
+    <!-- New section for additional information -->
+    <div class="info-section" id="info">
+        <h2>More Information</h2>
+        <p>
+        </p>
+        <!-- Add your additional text/content here -->
+        <div>
+            <h3>About Us</h3>
+            <p>This website is dedicated to bringing you the latest in gaming news and reviews.</p>
+        </div>
+        <div>
+            <h3>Contact</h3>
+            <p>If you have any questions, feel free to reach out at brickznbuildz@gmail.com.</p>
+        </div>
+        <!-- Add more sections as needed -->
+    </div>
 
-  <!-- To-Do List -->
-  <div class="todo">
-    <h3>To-Do List</h3>
-    <input type="text" id="todoInput" placeholder="Add a task" />
-    <button onclick="addToDo()">Add Task</button>
-    <ul id="todoList"></ul>
-  </div>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            document.getElementById('time').textContent = timeString;
+        }
 
-  <script src="script.js"></script>
+        // Update the time immediately and every second
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
 </body>
-  body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  background: linear-gradient(45deg, #ff6600, #333333); /* Orange to Black gradient */
-  animation: backgroundAnimation 10s ease-in-out infinite;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Arial', sans-serif;
-  color: white;
-}
-
-@keyframes backgroundAnimation {
-  0% { background: linear-gradient(45deg, #ff6600, #333333); }
-  50% { background: linear-gradient(45deg, #ff6600, #222222); }
-  100% { background: linear-gradient(45deg, #ff6600, #333333); }
-}
-
-.time {
-  font-size: 3em;
-  margin-bottom: 20px;
-  color: #ff6600; /* Orange color for the time */
-}
-
-.calculator {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 30px;
-  max-width: 300px;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-  padding: 20px;
-  border-radius: 15px;
-}
-
-button {
-  padding: 20px;
-  background-color: #ff6600; /* Orange buttons */
-  border: none;
-  border-radius: 10px;
-  font-size: 1.5em;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #ff7f32; /* Lighter orange for hover effect */
-}
-
-input[type="text"] {
-  grid-column: span 4;
-  padding: 10px;
-  font-size: 1.5em;
-  text-align: right;
-  background-color: rgba(255, 255, 255, 0.1); /* Light gray for the input field */
-  border-radius: 10px;
-  color: white;
-  border: none;
-}
-
-.todo {
-  text-align: center;
-  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
-  padding: 20px;
-  border-radius: 10px;
-  width: 300px;
-}
-
-.todo input[type="text"] {
-  padding: 10px;
-  width: 200px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: none;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-}
-
-.todo ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.todo li {
-  margin: 5px 0;
-  cursor: pointer;
-  color: #ff6600;
-  transition: color 0.3s ease;
-}
-
-.todo li.completed {
-  text-decoration: line-through;
-  color: grey;
-}
-
-.todo li:hover {
-  color: #ff7f32; /* Lighter orange on hover */
-}
-
-/* Custom mouse pointer */
-body {
-  cursor: url('https://example.com/custom-cursor.png'), auto; /* Replace with your custom cursor URL */
-}
 </html>
-
-
-  
