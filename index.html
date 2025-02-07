@@ -1,4 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-    <body> <p> The Nile Is Cool. Sadly, Cruz doesn't think that this website is cool, or the nile. 😒</p></body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Nile River</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #333;
+            padding: 15px;
+        }
+        nav a {
+            color: #ffffff;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .content {
+            margin: 40px auto;
+            padding: 30px;
+            width: 80%;
+            max-width: 900px;
+            border: 1px solid #444;
+            border-radius: 15px;
+            background-color: #252525;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+        }
+    </style>
+    <script>
+        function loadPage(page) {
+            fetch(page)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('content').innerHTML = data;
+                });
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <a onclick="loadPage('what-is-the-nile.html')">What is the Nile?</a>
+        <a onclick="loadPage('food.html')">How It Provided Food</a>
+        <a onclick="loadPage('protection.html')">How It Protected Egypt</a>
+        <a onclick="loadPage('facts.html')">Facts About the Nile</a>
+        <a onclick="loadPage('more.html')">More</a>
+    </nav>
+    <div id="content" class="content">
+        <h1>Welcome to The Nile River Website</h1>
+        <p>Explore the history, significance, and fascinating facts about the Nile River.</p>
+    </div>
+</body>
 </html>
